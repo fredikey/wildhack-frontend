@@ -10,8 +10,6 @@ module.exports = {
 					'^@feature/(.+)': ([, name]) => `./src/features/${name}/shared`
 				}
 			}
-		],
-		// Reanimated plugin has to be listed last.
-		'react-native-reanimated/plugin'
+		]
 	]
 }

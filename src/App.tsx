@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import 'core-js/proposals/reflect-metadata'
 import 'react-native-gesture-handler'
 import React from 'react'
 import { StatusBar } from 'react-native'
@@ -8,6 +8,9 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen } from '@feature/user'
 import { HomeScreen } from '@feature/home'
+import * as eva from '@eva-design/eva'
+import { EvaIconsPack } from '@ui-kitten/eva-icons'
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 
 const MainStack = createNativeStackNavigator()
 const MainNavigation = () => {
@@ -29,14 +32,17 @@ const Stack = createNativeStackNavigator()
 const App = () => {
 	return (
 		<>
-			<StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-			<NavigationContainer theme={appTheme}>
-				<Stack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_INIT}>
-					<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
-					<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
-					<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
-				</Stack.Navigator>
-			</NavigationContainer>
+			<IconRegistry icons={EvaIconsPack} />
+			<ApplicationProvider {...eva} theme={eva.light}>
+				<StatusBar backgroundColor="#FFF" barStyle="dark-content" />
+				<NavigationContainer theme={appTheme}>
+					<Stack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_INIT}>
+						<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
+						<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
+						<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
+					</Stack.Navigator>
+				</NavigationContainer>
+			</ApplicationProvider>
 		</>
 	)
 }
