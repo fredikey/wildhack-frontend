@@ -1,9 +1,26 @@
 import { Button, Icon, Layout, Text } from '@ui-kitten/components'
 import React from 'react'
 import { Logo } from '../components/Logo'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, ToastAndroid } from 'react-native'
+import { useAuthStore } from '../store/AuthStore'
+import { Screen, useResetNavigation } from '@lib/navigation'
 
 export const AuthScreen = () => {
+	const authStore = useAuthStore()
+	const resetNavigation = useResetNavigation()
+
+	const onGoogleButtonPress = () => {
+		authStore
+			.googleSignIn()
+			.then(() => {
+				resetNavigation(Screen.SYSTEM_MAIN)
+			})
+			.catch((err) => {
+				if (err.message) {
+					ToastAndroid.show(err.message, ToastAndroid.LONG)
+				}
+			})
+	}
 	return (
 		<Layout style={ss.container}>
 			<Logo />
@@ -13,7 +30,7 @@ export const AuthScreen = () => {
 			<Text category="p1" style={ss.description}>
 				Приложение для коммуникации с волонтерами, еще какой-нибудь текст...
 			</Text>
-			<Button accessoryLeft={<Icon name="google" />} appearance="outline" size="giant">
+			<Button onPress={onGoogleButtonPress} accessoryLeft={<Icon name="google" />} appearance="outline" size="giant">
 				Войти через Google
 			</Button>
 		</Layout>

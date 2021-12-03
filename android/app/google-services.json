@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "113325607362",
+    "project_id": "wildhack-63a78",
+    "storage_bucket": "wildhack-63a78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113325607362:android:b965dbfa9cc4a5ec806e5b",
+        "android_client_info": {
+          "package_name": "com.wildhack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113325607362-bkqn32ljh7jivu8v8ndo0deegn9if97o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wildhack",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "113325607362-m9tpocunoo52c62ikekmkgr7r2je44k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF2e5emOGOvbIX1YF_ifHKCnBR5ikKFiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113325607362-m9tpocunoo52c62ikekmkgr7r2je44k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
