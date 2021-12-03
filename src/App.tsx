@@ -6,7 +6,7 @@ import { Screen, STACK_SCREEN_OPTIONS } from '@lib/navigation'
 import { InitScreen } from '@feature/app'
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AuthScreen } from './features/user/screens/AuthScreen'
+import { AuthScreen } from '@feature/user'
 import { HomeScreen } from '@feature/home'
 
 const MainStack = createNativeStackNavigator()
