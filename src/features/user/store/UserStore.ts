@@ -1,16 +1,16 @@
 import { container, singleton } from 'tsyringe'
 import { makeAutoObservable } from 'mobx'
-import { IUser } from '../models/User'
+import { UserType } from '../models/User'
 
 @singleton()
 export class UserStore {
-	data: IUser | null = null
+	data: UserType = null
 
 	constructor() {
 		makeAutoObservable(this)
 	}
 
-	setUser(user: IUser | null) {
+	setUser(user: UserType) {
 		this.data = user
 	}
 }

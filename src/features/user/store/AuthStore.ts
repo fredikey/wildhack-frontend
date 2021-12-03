@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import auth from '@react-native-firebase/auth'
 import { UserStore } from './UserStore'
-import { IUser } from '../models/User'
+import { UserType } from '../models/User'
 
 GoogleSignin.configure({
 	webClientId: '113325607362-m9tpocunoo52c62ikekmkgr7r2je44k4.apps.googleusercontent.com'
@@ -12,18 +12,21 @@ GoogleSignin.configure({
 @singleton()
 export class AuthStore {
 	private userStore = container.resolve(UserStore)
+	private firebaseAuth = auth()
+
 	isInitialized = false
 	isAuthenticated = false
 
 	constructor() {
-		makeAutoObservable<AuthStore, 'userStore'>(this, {
-			userStore: false
+		makeAutoObservable<AuthStore, 'userStore' | 'firebaseAuth'>(this, {
+			userStore: false,
+			firebaseAuth: false
 		})
 
-		auth().onAuthStateChanged(this.onAuthStateChanged)
+		this.firebaseAuth.onAuthStateChanged(this.onAuthStateChanged)
 	}
 
-	private onAuthStateChanged = (user: IUser | null) => {
+	private onAuthStateChanged = (user: UserType) => {
 		this.userStore.setUser(user)
 		this.isAuthenticated = user !== null
 
@@ -40,7 +43,11 @@ export class AuthStore {
 		const googleCredential = auth.GoogleAuthProvider.credential(idToken)
 
 		// Sign-in the user with the credential
-		auth().signInWithCredential(googleCredential)
+		await this.firebaseAuth.signInWithCredential(googleCredential)
+	}
+
+	async logout() {
+		await this.firebaseAuth.signOut()
 	}
 }
 
