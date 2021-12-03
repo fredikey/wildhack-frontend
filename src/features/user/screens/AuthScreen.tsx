@@ -1,13 +1,18 @@
 import { Button, Icon, Layout, Text } from '@ui-kitten/components'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Logo } from '../components/Logo'
 import { StyleSheet, ToastAndroid } from 'react-native'
 import { useAuthStore } from '../store/AuthStore'
 import { Screen, useResetNavigation } from '@lib/navigation'
+import { hideSplashScreen } from '@lib/splash'
 
 export const AuthScreen = () => {
 	const authStore = useAuthStore()
 	const resetNavigation = useResetNavigation()
+
+	useEffect(() => {
+		hideSplashScreen()
+	}, [])
 
 	const onGoogleButtonPress = () => {
 		authStore
