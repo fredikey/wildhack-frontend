@@ -5,15 +5,15 @@ declare global {
 		interface RootParamList {
 			[Screen.SYSTEM_INIT]: undefined
 			[Screen.SYSTEM_MAIN]: undefined
-			[Screen.Login]: undefined
+			[Screen.LOGIN]: undefined
 
-			[TAB_HOME]: undefined
-			[HOME_START]: undefined
-			[HOME_FORM]: undefined
-			[HOME_QUESTIONS]: undefined
-			[TAB_QUESTIONS]: undefined
-			[TAB_INFO]: undefined
-			[TAB_PROFILE]: undefined
+			[Screen.TAB_HOME]: undefined
+			[Screen.HOME_START]: undefined
+			[Screen.HOME_FORM]: undefined
+			[Screen.HOME_QUESTIONS]: undefined
+			[Screen.TAB_QUESTIONS]: undefined
+			[Screen.TAB_INFO]: undefined
+			[Screen.TAB_PROFILE]: undefined
 		}
 	}
 }
