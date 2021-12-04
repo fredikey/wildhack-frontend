@@ -6,7 +6,7 @@ import { Screen, STACK_SCREEN_OPTIONS } from '@lib/navigation'
 import { InitScreen, TabIcon, TabLabel } from '@feature/app'
 import { DefaultTheme, NavigationContainer, RouteProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { AuthScreen } from '@feature/user'
+import { AuthScreen, ProfileScreen } from '@feature/user'
 import { HomeScreen } from '@feature/home'
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider } from '@ui-kitten/components'
@@ -40,7 +40,7 @@ const MainNavigation = () => {
 			<Tab.Screen name={Screen.TAB_HOME} component={HomeScreen} />
 			<Tab.Screen name={Screen.TAB_INFO} component={EmptyScreen} />
 			<Tab.Screen name={Screen.TAB_QUESTIONS} component={EmptyScreen} />
-			<Tab.Screen name={Screen.TAB_PROFILE} component={EmptyScreen} />
+			<Tab.Screen name={Screen.TAB_PROFILE} component={ProfileScreen} />
 		</Tab.Navigator>
 	)
 }
