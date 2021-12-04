@@ -31,7 +31,7 @@ const ss = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	buttonFull: {
-		flex: 1
+		width: '100%'
 	},
 	buttonText: {
 		...getTextStyle(16, 'medium'),

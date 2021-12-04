@@ -22,10 +22,12 @@ export const ProfileScreen = () => {
 	}
 	return (
 		<View style={ss.container}>
-			<Text style={ss.title}>Личный кабинет волонтёра</Text>
-			<Text style={ss.name}>{userStore.data?.displayName}</Text>
-			<Text style={ss.email}>{userStore.data?.email}</Text>
-			<UIButton style={ss.button} onPress={onLogout}>
+			<View>
+				<Text style={ss.title}>Личный кабинет волонтёра</Text>
+				<Text style={ss.name}>{userStore.data?.displayName}</Text>
+				<Text style={ss.email}>{userStore.data?.email}</Text>
+			</View>
+			<UIButton style={ss.button} onPress={onLogout} full>
 				Выйти из аккаунта
 			</UIButton>
 		</View>
@@ -37,7 +39,8 @@ const ss = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		paddingHorizontal: 28,
-		paddingTop: 30
+		paddingTop: 30,
+		justifyContent: 'space-between'
 	},
 	title: {
 		...getTextStyle(26),
@@ -50,6 +53,6 @@ const ss = StyleSheet.create({
 		...getTextStyle(24)
 	},
 	button: {
-		marginTop: 35
+		marginBottom: 20
 	}
 })
