@@ -1,14 +1,9 @@
 import { Button, Layout, Text } from '@ui-kitten/components'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Logo } from '../components/SubmissionLogo'
 import { StyleSheet } from 'react-native'
-import { hideSplashScreen } from '@lib/splash'
 
 export const SubmissionScreen = () => {
-
-	useEffect(() => {
-		hideSplashScreen()
-	}, [])
 
 	return (
 		<Layout style={ss.container}>

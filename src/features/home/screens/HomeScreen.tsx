@@ -12,7 +12,7 @@ export const HomeScreen = () => {
 	useEffect(() => {
 		hideSplashScreen()
 	}, [])
-
+	
 	const onPressHandler = () => {
 		resetNavigation(Screen.SUBMISSION)
 	}
@@ -29,10 +29,10 @@ export const HomeScreen = () => {
 				Статус
 			</Text>
 			<Text category="h1" style={ss.description}>
-				Подаа заявки
+				Подача заявки
 			</Text>
 			<Button onPress={onPressHandler} appearance="outline" size="giant">
-				Подача завки
+				Подача заявки
 			</Button>
 		</Layout>
 	)
