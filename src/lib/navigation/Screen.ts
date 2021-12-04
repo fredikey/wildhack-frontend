@@ -4,5 +4,6 @@ export enum Screen {
 	LOGIN = 'Auth/Login',
 
 	SYSTEM_MAIN = 'System/Main',
-	HOME = 'Main/Home'
+	HOME = 'Main/Home',
+	SUBMISSION = 'Main/Submission'
 }

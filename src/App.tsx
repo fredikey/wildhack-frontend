@@ -8,6 +8,7 @@ import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen } from '@feature/user'
 import { HomeScreen } from '@feature/home'
+import { SubmissionScreen } from '@feature/submission'
 import * as eva from '@eva-design/eva'
 import { EvaIconsPack } from '@ui-kitten/eva-icons'
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
@@ -40,6 +41,7 @@ const App = () => {
 						<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
 						<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
 						<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
+						<Stack.Screen name={Screen.SUBMISSION} component={SubmissionScreen} />
 					</Stack.Navigator>
 				</NavigationContainer>
 			</ApplicationProvider>

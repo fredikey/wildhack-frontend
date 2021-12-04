@@ -18,7 +18,7 @@ export const AuthScreen = () => {
 		authStore
 			.googleSignIn()
 			.then(() => {
-				resetNavigation(Screen.SYSTEM_MAIN)
+				resetNavigation(Screen.HOME)
 			})
 			.catch((err) => {
 				if (err.message) {

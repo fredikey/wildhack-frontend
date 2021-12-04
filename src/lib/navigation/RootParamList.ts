@@ -9,6 +9,7 @@ declare global {
 			[Screen.LOGIN]: undefined
 
 			[Screen.HOME]: undefined
+			[Screen.SUBMISSION]: undefined
 		}
 	}
 }
