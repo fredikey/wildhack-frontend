@@ -27,7 +27,7 @@ const appTheme = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
-		background: '#FFF'
+		background: '#E5E5E5'
 	}
 }
 const Stack = createNativeStackNavigator()

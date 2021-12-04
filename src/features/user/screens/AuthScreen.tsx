@@ -1,10 +1,12 @@
-import { Button, Icon, Layout, Text } from '@ui-kitten/components'
+import { Layout, Text } from '@ui-kitten/components'
 import React, { useEffect } from 'react'
 import { Logo } from '../components/Logo'
 import { StyleSheet, ToastAndroid } from 'react-native'
 import { useAuthStore } from '../store/AuthStore'
 import { Screen, useResetNavigation } from '@lib/navigation'
 import { hideSplashScreen } from '@lib/splash'
+import { deviceHeight, deviceWidth } from '@lib/device'
+import { getTextStyle, UIButton } from '@lib/ui'
 
 export const AuthScreen = () => {
 	const authStore = useAuthStore()
@@ -29,19 +31,13 @@ export const AuthScreen = () => {
 	return (
 		<Layout style={ss.container}>
 			<Logo />
-			<Text category="h1" style={ss.title}>
-				Для волонтеров
-			</Text>
-			<Text category="p1" style={ss.description}>
-				Приложение для коммуникации с волонтерами, еще какой-нибудь текст...
-			</Text>
-			<Button onPress={onGoogleButtonPress} accessoryLeft={<Icon name="google" />} appearance="outline" size="giant">
-				Войти через Google
-			</Button>
+			<Text style={ss.title}>Для волонтёров</Text>
+			<Text style={ss.description}>Здесь должна быть дополнительная поясняющая информация</Text>
+			<UIButton onPress={onGoogleButtonPress}>Войти с помощю Google</UIButton>
 		</Layout>
 	)
 }
-
+console.log(deviceWidth, deviceHeight)
 const ss = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -50,11 +46,14 @@ const ss = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	title: {
-		marginTop: 5,
-		marginBottom: 10
+		...getTextStyle(32, 'medium'),
+		marginTop: 17,
+		marginBottom: 9
 	},
 	description: {
+		...getTextStyle(18),
 		textAlign: 'center',
-		marginBottom: 30
+		marginBottom: 50,
+		maxWidth: deviceWidth - 100
 	}
 })
