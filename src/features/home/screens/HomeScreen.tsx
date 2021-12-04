@@ -1,40 +1,23 @@
-import React, { useEffect } from 'react'
-import {  Button, Layout, Text } from '@ui-kitten/components'
-
-import { hideSplashScreen } from '@lib/splash'
-import { StyleSheet } from 'react-native'
-import { Screen, useResetNavigation } from '@lib/navigation'
+import React from 'react'
+import { Logo } from '../components/SubmissionLogo'
+import { StyleSheet, Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { getTextStyle, UIButton } from '@lib/ui'
+import { useNavigation } from '@react-navigation/core'
+import { Screen } from '@lib/navigation'
 
 export const HomeScreen = () => {
-
-	const resetNavigation = useResetNavigation()
-
-	useEffect(() => {
-		hideSplashScreen()
-	}, [])
-	
-	const onPressHandler = () => {
-		resetNavigation(Screen.SUBMISSION)
+	const navigation = useNavigation()
+	const goToForm = () => {
+		navigation.navigate(Screen.HOME_FORM)
 	}
-
 	return (
-		<Layout style={ss.container}>
-			<Text category="p1" style={ss.title}>
-				Личный кабинет волонтера
-			</Text>
-			<Text category="h1" style={ss.description}>
-				Андрей Андреевич
-			</Text>
-			<Text category="p1" style={ss.title}>
-				Статус
-			</Text>
-			<Text category="h1" style={ss.description}>
-				Подача заявки
-			</Text>
-			<Button onPress={onPressHandler} appearance="outline" size="giant">
-				Подача заявки
-			</Button>
-		</Layout>
+		<SafeAreaView style={ss.container}>
+			<Logo />
+			<Text style={ss.title}>Подача заявки</Text>
+			<Text style={ss.description}>Вы хотите стать волонтером?{'\n'} Подайте заявку!</Text>
+			<UIButton onPress={goToForm}>Стать волонтером</UIButton>
+		</SafeAreaView>
 	)
 }
 
@@ -47,10 +30,12 @@ const ss = StyleSheet.create({
 	},
 	title: {
 		marginTop: 5,
-		marginBottom: 10
+		marginBottom: 10,
+		...getTextStyle(32, 'medium')
 	},
 	description: {
 		textAlign: 'center',
-		marginBottom: 30
+		marginBottom: 50,
+		...getTextStyle(26)
 	}
 })

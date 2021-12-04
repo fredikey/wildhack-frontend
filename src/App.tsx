@@ -34,10 +34,22 @@ const EmptyScreen = () => {
 		</View>
 	)
 }
+
+const HomeStack = createNativeStackNavigator()
+
+const HomeNavigation = () => {
+	return (
+		<HomeStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME_START}>
+			<HomeStack.Screen name={Screen.HOME_START} component={HomeScreen} />
+			<HomeStack.Screen name={Screen.HOME_FORM} component={EmptyScreen} />
+			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={EmptyScreen} />
+		</HomeStack.Navigator>
+	)
+}
 const MainNavigation = () => {
 	return (
 		<Tab.Navigator screenOptions={tabScreenOptions} initialRouteName={Screen.TAB_HOME}>
-			<Tab.Screen name={Screen.TAB_HOME} component={HomeScreen} />
+			<Tab.Screen name={Screen.TAB_HOME} component={HomeNavigation} />
 			<Tab.Screen name={Screen.TAB_INFO} component={EmptyScreen} />
 			<Tab.Screen name={Screen.TAB_QUESTIONS} component={EmptyScreen} />
 			<Tab.Screen name={Screen.TAB_PROFILE} component={ProfileScreen} />

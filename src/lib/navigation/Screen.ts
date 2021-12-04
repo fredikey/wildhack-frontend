@@ -6,7 +6,9 @@ export enum Screen {
 	SYSTEM_MAIN = 'System/Main',
 
 	TAB_HOME = 'Main/Home',
-	SUBMISSION = 'Home/Submission',
+	HOME_START = 'Home/Start',
+	HOME_FORM = 'Home/Form',
+	HOME_QUESTIONS = 'Home/Questions',
 
 	TAB_QUESTIONS = 'Main/Questions',
 
