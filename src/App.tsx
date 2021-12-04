@@ -1,25 +1,47 @@
 import 'core-js/proposals/reflect-metadata'
 import 'react-native-gesture-handler'
 import React from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, View, Text } from 'react-native'
 import { Screen, STACK_SCREEN_OPTIONS } from '@lib/navigation'
-import { InitScreen } from '@feature/app'
-import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
+import { InitScreen, TabIcon, TabLabel } from '@feature/app'
+import { DefaultTheme, NavigationContainer, RouteProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen } from '@feature/user'
 import { HomeScreen } from '@feature/home'
-import { SubmissionScreen } from '@feature/submission'
 import * as eva from '@eva-design/eva'
-import { EvaIconsPack } from '@ui-kitten/eva-icons'
-import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
+import { ApplicationProvider } from '@ui-kitten/components'
+import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-const MainStack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
+
+type TabScreenOptions = ({ route }: { route: RouteProp<any> }) => BottomTabNavigationOptions
+const tabScreenOptions: TabScreenOptions = ({ route }) => ({
+	tabBarIcon: ({ focused }) => <TabIcon route={route.name as Screen} focused={focused} />,
+	tabBarLabel: ({ focused }) => <TabLabel route={route.name as Screen} focused={focused} />,
+	headerShown: false,
+	tabBarHideOnKeyboard: true,
+	tabBarStyle: {
+		backgroundColor: '#fff',
+		borderTopWidth: 0,
+		height: 55
+	}
+})
+
+const EmptyScreen = () => {
+	return (
+		<View>
+			<Text>screen</Text>
+		</View>
+	)
+}
 const MainNavigation = () => {
 	return (
-		<MainStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME}>
-			<MainStack.Screen name={Screen.HOME} component={HomeScreen} />
-			<MainStack.Screen name={Screen.SUBMISSION} component={SubmissionScreen} />
-		</MainStack.Navigator>
+		<Tab.Navigator screenOptions={tabScreenOptions} initialRouteName={Screen.TAB_HOME}>
+			<Tab.Screen name={Screen.TAB_HOME} component={HomeScreen} />
+			<Tab.Screen name={Screen.TAB_INFO} component={EmptyScreen} />
+			<Tab.Screen name={Screen.TAB_QUESTIONS} component={EmptyScreen} />
+			<Tab.Screen name={Screen.TAB_PROFILE} component={EmptyScreen} />
+		</Tab.Navigator>
 	)
 }
 
@@ -27,25 +49,22 @@ const appTheme = {
 	...DefaultTheme,
 	colors: {
 		...DefaultTheme.colors,
-		background: '#E5E5E5'
+		background: '#F6FAFF'
 	}
 }
 const Stack = createNativeStackNavigator()
 const App = () => {
 	return (
-		<>
-			<IconRegistry icons={EvaIconsPack} />
-			<ApplicationProvider {...eva} theme={eva.light}>
-				<StatusBar backgroundColor="#FFF" barStyle="dark-content" />
-				<NavigationContainer theme={appTheme}>
-					<Stack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_INIT}>
-						<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
-						<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
-						<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
-					</Stack.Navigator>
-				</NavigationContainer>
-			</ApplicationProvider>
-		</>
+		<ApplicationProvider {...eva} theme={eva.light}>
+			<StatusBar backgroundColor="#FFF" barStyle="dark-content" />
+			<NavigationContainer theme={appTheme}>
+				<Stack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_INIT}>
+					<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
+					<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
+					<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
+				</Stack.Navigator>
+			</NavigationContainer>
+		</ApplicationProvider>
 	)
 }
 

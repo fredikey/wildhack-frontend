@@ -1,6 +1,10 @@
 import { InitScreen } from '../screens/InitScreen'
+import { TabIcon, TabLabel } from '../components/TabComponents'
 
 export {
 	// Screens
-	InitScreen
+	InitScreen,
+	// Components,
+	TabIcon,
+	TabLabel
 }
