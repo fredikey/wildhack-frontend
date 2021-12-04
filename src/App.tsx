@@ -16,8 +16,9 @@ import { ApplicationProvider, IconRegistry } from '@ui-kitten/components'
 const MainStack = createNativeStackNavigator()
 const MainNavigation = () => {
 	return (
-		<MainStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_MAIN}>
+		<MainStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME}>
 			<MainStack.Screen name={Screen.HOME} component={HomeScreen} />
+			<MainStack.Screen name={Screen.SUBMISSION} component={SubmissionScreen} />
 		</MainStack.Navigator>
 	)
 }
@@ -41,7 +42,6 @@ const App = () => {
 						<Stack.Screen name={Screen.SYSTEM_INIT} component={InitScreen} />
 						<Stack.Screen name={Screen.LOGIN} component={AuthScreen} />
 						<Stack.Screen name={Screen.SYSTEM_MAIN} component={MainNavigation} />
-						<Stack.Screen name={Screen.SUBMISSION} component={SubmissionScreen} />
 					</Stack.Navigator>
 				</NavigationContainer>
 			</ApplicationProvider>
