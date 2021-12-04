@@ -37,7 +37,7 @@ export const AuthScreen = () => {
 		</Layout>
 	)
 }
-console.log(deviceWidth, deviceHeight)
+
 const ss = StyleSheet.create({
 	container: {
 		flex: 1,
@@ -47,13 +47,13 @@ const ss = StyleSheet.create({
 	},
 	title: {
 		...getTextStyle(32, 'medium'),
-		marginTop: 17,
-		marginBottom: 9
+		marginTop: 23,
+		marginBottom: 15
 	},
 	description: {
-		...getTextStyle(18),
+		...getTextStyle(24),
 		textAlign: 'center',
-		marginBottom: 50,
+		marginBottom: 92,
 		maxWidth: deviceWidth - 100
 	}
 })
