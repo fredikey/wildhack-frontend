@@ -7,7 +7,7 @@ import { InitScreen, TabIcon, TabLabel } from '@feature/app'
 import { DefaultTheme, NavigationContainer, RouteProp } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen, ProfileScreen } from '@feature/user'
-import { HomeScreen } from '@feature/home'
+import { HomeTestScreen, HomeScreen } from '@feature/home'
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider } from '@ui-kitten/components'
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -42,7 +42,7 @@ const HomeNavigation = () => {
 		<HomeStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME_START}>
 			<HomeStack.Screen name={Screen.HOME_START} component={HomeScreen} />
 			<HomeStack.Screen name={Screen.HOME_FORM} component={EmptyScreen} />
-			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={EmptyScreen} />
+			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={HomeTestScreen} />
 		</HomeStack.Navigator>
 	)
 }
