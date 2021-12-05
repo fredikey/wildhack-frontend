@@ -98,7 +98,9 @@ export const FormScreen = () => {
                         )
                     })
                 }
-                <UIButton onPress={goToForm} style={ss.button} >Отправить анкету</UIButton>
+                <View style={ss.button}>
+                    <UIButton onPress={goToForm} >Отправить анкету</UIButton>
+                </View>
             </SafeAreaView>
         </ScrollView>
 	)
@@ -125,6 +127,7 @@ const ss = StyleSheet.create({
 		...getTextStyle(18, 'regular', '#757575')
 	},
     button: {
-        width: '100%'
+        display: 'flex',
+        alignItems: 'center'
     }
 })
