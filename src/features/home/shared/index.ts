@@ -5,6 +5,6 @@ import { HomeTestScreen } from '../screens/HomeTestScreen'
 export {
 	// Screens
 	HomeScreen,
-	FormScreen
+	FormScreen,
 	HomeTestScreen
 }
