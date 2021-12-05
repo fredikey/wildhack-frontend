@@ -5,9 +5,10 @@ import { StatusBar, View, Text } from 'react-native'
 import { Screen, STACK_SCREEN_OPTIONS } from '@lib/navigation'
 import { InitScreen, TabIcon, TabLabel } from '@feature/app'
 import { DefaultTheme, NavigationContainer, RouteProp } from '@react-navigation/native'
+import { default as theme } from './lib/ui/custom-theme.json'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen, ProfileScreen } from '@feature/user'
-import { HomeScreen } from '@feature/home'
+import { FormScreen, HomeScreen } from '@feature/home'
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider } from '@ui-kitten/components'
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -41,7 +42,7 @@ const HomeNavigation = () => {
 	return (
 		<HomeStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME_START}>
 			<HomeStack.Screen name={Screen.HOME_START} component={HomeScreen} />
-			<HomeStack.Screen name={Screen.HOME_FORM} component={EmptyScreen} />
+			<HomeStack.Screen name={Screen.HOME_FORM} component={FormScreen} />
 			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={EmptyScreen} />
 		</HomeStack.Navigator>
 	)
@@ -67,7 +68,7 @@ const appTheme = {
 const Stack = createNativeStackNavigator()
 const App = () => {
 	return (
-		<ApplicationProvider {...eva} theme={eva.light}>
+		<ApplicationProvider {...eva} theme={{...eva.light, ...theme}}>
 			<StatusBar backgroundColor="#FFF" barStyle="dark-content" />
 			<NavigationContainer theme={appTheme}>
 				<Stack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.SYSTEM_INIT}>

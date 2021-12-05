@@ -12,11 +12,12 @@ export const FONT_WEIGHT_MAP: Record<FontWeightType, string> = {
 
 export const getTextStyle = (
 	fontSize: number,
-	weight: FontWeightType = 'regular'
+	weight: FontWeightType = 'regular',
+	color: string = '#000'
 ): Pick<TextStyle, 'fontSize' | 'fontFamily' | 'color'> => {
 	return {
-		color: '#000',
 		fontSize,
-		fontFamily: FONT_WEIGHT_MAP[weight] || 'Jost-Regular'
+		fontFamily: FONT_WEIGHT_MAP[weight] || 'Jost-Regular',
+		color
 	}
 }
