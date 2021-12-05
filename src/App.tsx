@@ -8,10 +8,11 @@ import { DefaultTheme, NavigationContainer, RouteProp } from '@react-navigation/
 import { default as theme } from './lib/ui/custom-theme.json'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AuthScreen, ProfileScreen } from '@feature/user'
-import { FormScreen, HomeScreen } from '@feature/home'
+import { HomeTestScreen, FormScreen, HomeScreen } from '@feature/home'
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider } from '@ui-kitten/components'
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { FAQScreen, InfoScreen } from '@feature/info'
 
 const Tab = createBottomTabNavigator()
 
@@ -43,7 +44,7 @@ const HomeNavigation = () => {
 		<HomeStack.Navigator screenOptions={STACK_SCREEN_OPTIONS} initialRouteName={Screen.HOME_START}>
 			<HomeStack.Screen name={Screen.HOME_START} component={HomeScreen} />
 			<HomeStack.Screen name={Screen.HOME_FORM} component={FormScreen} />
-			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={EmptyScreen} />
+			<HomeStack.Screen name={Screen.HOME_QUESTIONS} component={HomeTestScreen} />
 		</HomeStack.Navigator>
 	)
 }
@@ -51,8 +52,8 @@ const MainNavigation = () => {
 	return (
 		<Tab.Navigator screenOptions={tabScreenOptions} initialRouteName={Screen.TAB_HOME}>
 			<Tab.Screen name={Screen.TAB_HOME} component={HomeNavigation} />
-			<Tab.Screen name={Screen.TAB_INFO} component={EmptyScreen} />
-			<Tab.Screen name={Screen.TAB_QUESTIONS} component={EmptyScreen} />
+			<Tab.Screen name={Screen.TAB_INFO} component={InfoScreen} />
+			<Tab.Screen name={Screen.TAB_QUESTIONS} component={FAQScreen} />
 			<Tab.Screen name={Screen.TAB_PROFILE} component={ProfileScreen} />
 		</Tab.Navigator>
 	)

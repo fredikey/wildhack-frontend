@@ -8,13 +8,21 @@ interface IProps {
 	style?: StyleProp<ViewStyle>
 	children?: string
 	full?: boolean
+	disabled?: boolean
 }
-export const UIButton = ({ type, onPress, style, children, full }: IProps) => {
+export const UIButton = ({ type, onPress, style, children, full, disabled }: IProps) => {
 	const isSecondary = type === 'secondary'
 	return (
 		<TouchableOpacity
 			activeOpacity={0.7}
-			style={[ss.button, isSecondary && ss.buttonSecondary, full && ss.buttonFull, style]}
+			disabled={disabled}
+			style={[
+				ss.button,
+				isSecondary && ss.buttonSecondary,
+				disabled && ss.buttonDisabled,
+				full && ss.buttonFull,
+				style
+			]}
 			onPress={onPress}>
 			<Text style={[ss.buttonText, isSecondary && ss.buttonSecondaryText]}>{children}</Text>
 		</TouchableOpacity>
@@ -34,8 +42,13 @@ const ss = StyleSheet.create({
 		width: '100%'
 	},
 	buttonText: {
+		marginHorizontal: 10,
+		textAlign: 'center',
 		...getTextStyle(16, 'medium'),
 		color: '#fff'
+	},
+	buttonDisabled: {
+		opacity: 0.5
 	},
 	buttonSecondary: {
 		backgroundColor: '#FFEECC',
