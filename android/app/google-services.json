@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "113325607362-a1t1ku93p4l1fijbirh5vpcuceo7em77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wildhack",
+            "certificate_hash": "5521bfafbbe01e853dceb6795a2b404cb3fb4d89"
+          }
+        },
+        {
           "client_id": "113325607362-bkqn32ljh7jivu8v8ndo0deegn9if97o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

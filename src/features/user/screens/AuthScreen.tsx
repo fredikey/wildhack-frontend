@@ -5,7 +5,7 @@ import { StyleSheet, ToastAndroid } from 'react-native'
 import { useAuthStore } from '../store/AuthStore'
 import { Screen, useResetNavigation } from '@lib/navigation'
 import { hideSplashScreen } from '@lib/splash'
-import { deviceHeight, deviceWidth } from '@lib/device'
+import { deviceWidth } from '@lib/device'
 import { getTextStyle, UIButton } from '@lib/ui'
 
 export const AuthScreen = () => {
@@ -32,7 +32,7 @@ export const AuthScreen = () => {
 		<Layout style={ss.container}>
 			<Logo />
 			<Text style={ss.title}>Для волонтёров</Text>
-			<Text style={ss.description}>Здесь должна быть дополнительная поясняющая информация</Text>
+			<Text style={ss.description}>Привет, будущий волонтер!{'\n'} Хочешь помогать природе? Все в твоих руках.</Text>
 			<UIButton onPress={onGoogleButtonPress}>Войти с помощю Google</UIButton>
 		</Layout>
 	)

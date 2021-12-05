@@ -2,53 +2,55 @@ import React, { useState } from 'react'
 import { Logo } from '../components/RequestFormLogo'
 import { ScrollView, StyleSheet, Text, ToastAndroid, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { getTextStyle, UIButton, UIDatePicker } from '@lib/ui'
+import { getTextStyle, UIButton, UIDatePicker, UIInput } from '@lib/ui'
 import { useNavigation } from '@react-navigation/core'
-import { UIInput } from '@lib/ui'
 import { CalendarRange } from '@ui-kitten/components'
 import { Screen } from '@lib/navigation'
 import { UITitle } from '@lib/ui/UITitle'
-
+import { useUserStore } from '@feature/user'
 
 export const FormScreen = () => {
-	// const navigation = useNavigation()
+	const navigation = useNavigation()
+	const userStore = useUserStore()
 
-	const goToForm = () => {
-		// navigation.navigate(Screen.HOME_FORM)
+	const onSubmit = () => {
         if (!isFormValid()) {
             ToastAndroid.show('Заполните все обязательные поля', ToastAndroid.LONG)
+        } else {
+            userStore.setUserSentForm()
+            navigation.navigate(Screen.HOME_START)
         }
 	}
 
-    const [formData, setFormData] = useState({
-        fullname: '',
-        mail: '',
-        birthday: '',
-        phone: '',
-        education: '',
-        area: '',
-        date: {}, 
-        languages: '',
-        experience: '',
-        skills: '',
-        recommendations: '',
-        links: '',
-        about: ''
-    })
+	const [formData, setFormData] = useState({
+		fullname: '',
+		mail: '',
+		birthday: '',
+		phone: '',
+		education: '',
+		area: '',
+		date: {},
+		languages: '',
+		experience: '',
+		skills: '',
+		recommendations: '',
+		links: '',
+		about: ''
+	})
 
-    const handleChange = (name: string, value: string) => {
-        setFormData({
-            ...formData,
-            [name]: value
-        })
-    }
+	const handleChange = (name: string, value: string) => {
+		setFormData({
+			...formData,
+			[name]: value
+		})
+	}
 
-    const handleChangeRange = (value: CalendarRange<Date>) => {
-        setFormData({
-            ...formData,
-            date: value
-        })
-    }
+	const handleChangeRange = (value: CalendarRange<Date>) => {
+		setFormData({
+			...formData,
+			date: value
+		})
+	}
 
     const isFormValid = () => {
         if (formData.fullname && formData.mail && formData.birthday && formData.phone && formData.education && formData.area && formData.date && formData.languages && formData.experience && formData.skills && formData.recommendations && formData.links) {
@@ -111,7 +113,7 @@ export const FormScreen = () => {
                     })
                 }
                 <View style={ss.button}>
-                    <UIButton onPress={goToForm} >Отправить анкету</UIButton>
+                    <UIButton onPress={onSubmit} >Отправить анкету</UIButton>
                 </View>
             </SafeAreaView>
         </ScrollView>
@@ -127,20 +129,20 @@ const ss = StyleSheet.create({
 	},
 	titleContainer: {
 		display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 15,
+		flexDirection: 'row',
+		alignItems: 'center',
+		marginBottom: 15
 	},
-    title: {
+	title: {
 		...getTextStyle(22, 'medium'),
-        marginLeft: 12,
-    },
+		marginLeft: 12
+	},
 	description: {
 		marginBottom: 18,
 		...getTextStyle(18, 'regular', '#757575')
 	},
-    button: {
-        display: 'flex',
-        alignItems: 'center'
-    }
+	button: {
+		display: 'flex',
+		alignItems: 'center'
+	}
 })
