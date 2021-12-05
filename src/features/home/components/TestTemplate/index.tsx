@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ScrollView, StyleSheet, Text, ToastAndroid, View } from 'react-native'
-import QuestionIcon from './questionIcon.svg'
-import { getTextStyle, UIButton } from '@lib/ui'
+import { ScrollView, StyleSheet, ToastAndroid, View } from 'react-native'
+import { UIButton } from '@lib/ui'
 import { InfoItems } from '../InfoItems'
 import { IQuestionVariant, ITestInfo } from '../../store/testsData'
 import { IQuestionRef, Question } from './Question'
@@ -9,6 +8,7 @@ import { useTestStore } from '../../store/TestStore'
 import { observer } from 'mobx-react'
 import { useNavigation } from '@react-navigation/core'
 import { Screen } from '@lib/navigation'
+import { UITitle } from '@lib/ui/UITitle'
 
 interface IProps extends ITestInfo {}
 export const TestTemplate = observer(({ title, info, questions }: IProps) => {
@@ -50,10 +50,7 @@ export const TestTemplate = observer(({ title, info, questions }: IProps) => {
 	const isButtonDisabled = answer.some((item) => item === undefined)
 	return (
 		<ScrollView style={ss.container} ref={scrollRef}>
-			<View style={[ss.content, ss.titleContainer]}>
-				<QuestionIcon />
-				<Text style={ss.title}>{title}</Text>
-			</View>
+			<UITitle>{title}</UITitle>
 
 			<InfoItems items={info} style={ss.mb25} />
 			<View style={ss.content}>
@@ -84,18 +81,6 @@ const ss = StyleSheet.create({
 	},
 	content: {
 		paddingHorizontal: 28
-	},
-	titleContainer: {
-		paddingHorizontal: 28,
-		flexDirection: 'row',
-		alignItems: 'center',
-		marginBottom: 10,
-		marginTop: 30
-	},
-	title: {
-		flex: 1,
-		marginLeft: 12,
-		...getTextStyle(28, 'medium')
 	},
 	mb25: {
 		marginBottom: 25

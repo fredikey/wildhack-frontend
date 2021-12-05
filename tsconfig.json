@@ -43,7 +43,7 @@
 			"@feature/app": ["./features/app/shared"],
 			"@feature/user": ["./features/user/shared"],
 			"@feature/home": ["./features/home/shared"],
-			"@feature/submission": ["./features/submission/shared"],
+			"@feature/info": ["./features/info/shared"]
 		},
 		// "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
 		// "typeRoots": [],                       /* List of folders to include type definitions from. */

@@ -11,6 +11,7 @@ import { HomeTestScreen, HomeScreen } from '@feature/home'
 import * as eva from '@eva-design/eva'
 import { ApplicationProvider } from '@ui-kitten/components'
 import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { FAQScreen, InfoScreen } from '@feature/info'
 
 const Tab = createBottomTabNavigator()
 
@@ -50,8 +51,8 @@ const MainNavigation = () => {
 	return (
 		<Tab.Navigator screenOptions={tabScreenOptions} initialRouteName={Screen.TAB_HOME}>
 			<Tab.Screen name={Screen.TAB_HOME} component={HomeNavigation} />
-			<Tab.Screen name={Screen.TAB_INFO} component={EmptyScreen} />
-			<Tab.Screen name={Screen.TAB_QUESTIONS} component={EmptyScreen} />
+			<Tab.Screen name={Screen.TAB_INFO} component={InfoScreen} />
+			<Tab.Screen name={Screen.TAB_QUESTIONS} component={FAQScreen} />
 			<Tab.Screen name={Screen.TAB_PROFILE} component={ProfileScreen} />
 		</Tab.Navigator>
 	)
