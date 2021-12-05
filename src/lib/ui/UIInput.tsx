@@ -11,13 +11,17 @@ interface IProps {
     keyboardType?: KeyboardTypeOptions
     inputStyle?: StyleProp<ViewStyle>
 	labelStyle?: StyleProp<ViewStyle>
-    textarea?: boolean
+    textarea?: boolean,
+    required?: boolean,
     onChange: (name: string, value: string) => void
 }
-export const UIInput = ({ name, value, label, placeholder, keyboardType, inputStyle, labelStyle, textarea, onChange }: IProps) => {
+export const UIInput = ({ name, value, label, placeholder, keyboardType, inputStyle, labelStyle, textarea, required, onChange }: IProps) => {
 	return (
         <View style={ss.container}>
-            <Text style={[ss.label, labelStyle]}>{label}</Text>
+            <View style={[ss.label, labelStyle]}>
+                {required && <Text style={[ss.requiredMark]}>*</Text>}
+                <Text style={[ss.label, labelStyle]}>{label}</Text>
+            </View>
             <TextInput
                 style={[ss.input, textarea && ss.textarea, inputStyle]}
                 placeholder={placeholder}
@@ -48,6 +52,13 @@ const ss = StyleSheet.create({
     },
     label: {
         ...getTextStyle(18),
-        marginBottom: 10
+        marginBottom: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+    },
+    requiredMark: {
+        marginRight: 5,
+        ...getTextStyle(18, 'regular', 'red'),
     }
 })
