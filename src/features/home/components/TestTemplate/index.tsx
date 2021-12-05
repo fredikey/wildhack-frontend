@@ -9,11 +9,13 @@ import { observer } from 'mobx-react'
 import { useNavigation } from '@react-navigation/core'
 import { Screen } from '@lib/navigation'
 import { UITitle } from '@lib/ui/UITitle'
+import { useUserStore } from '@feature/user'
 
 interface IProps extends ITestInfo {}
 export const TestTemplate = observer(({ title, info, questions }: IProps) => {
 	const navigation = useNavigation()
 	const testStore = useTestStore()
+	const userStore = useUserStore()
 	const scrollRef = useRef<ScrollView>(null)
 	const questionsRef = useRef<(IQuestionRef | null)[]>([])
 	const [answer, setAnswer] = useState<(IQuestionVariant | undefined)[]>(questions.map(() => undefined))
@@ -32,11 +34,11 @@ export const TestTemplate = observer(({ title, info, questions }: IProps) => {
 	const onSubmit = () => {
 		if (answer.every((item) => item !== undefined && item.isRight)) {
 			// all answers are correct
-			testStore.goToNextStep()
-
 			if (testStore.isLastStep) {
+				userStore.setUserTestSucceed()
 				navigation.navigate(Screen.HOME_START)
 			} else {
+				testStore.goToNextStep()
 				scrollRef.current?.scrollTo({ x: 0, y: 0, animated: true })
 			}
 		} else {
